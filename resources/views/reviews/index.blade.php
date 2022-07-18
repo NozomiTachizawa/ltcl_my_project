@@ -11,11 +11,15 @@
         <div class='reviews'>
             @foreach ($reviews as $review)
                 <div class='review'>
-                    <h2 class='title'>{{ $review->title }}</h2>
-                    <p class='price'>購入価格：¥{{ $review->price }}</p>
-                    <p class='place'>購入場所：{{ $review->place }}</p>
-                    <p class='brand'>ブランド・製造会社名：{{ $review->brand }}</p>
-                    <p class='body'>{{ $review->body }}</p>
+                    <h2 class='title'>
+                        <a href="/reviews/{{ $review->id }}">{{ $review->title }}</a>
+                    </h2>
+                    <dev class='contents'>
+                        <p class='price'>購入価格：¥{{ $review->price }}</p>
+                        <p class='place'>購入場所：{{ $review->place }}</p>
+                        <p class='brand'>ブランド・製造会社名：{{ $review->brand }}</p>
+                        <p class='body'>{{ $review->body }}</p>
+                    </dev>
                 </div>
             @endforeach
         </div>

@@ -12,5 +12,4 @@
 */
 
 Route::get('/', 'ReviewController@index');
-
-Route::get('/reviews', 'ReviewController@index');
+Route::get('/reviews/{review}', 'ReviewController@show');
