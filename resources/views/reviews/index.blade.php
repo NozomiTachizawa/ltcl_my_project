@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1>投稿一覧</h1>
+        [ <a href="/reviews/create">新規投稿作成</a> ]
         <div class='reviews'>
             @foreach ($reviews as $review)
                 <div class='review'>
