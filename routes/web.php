@@ -15,3 +15,5 @@ Route::get('/', 'ReviewController@index');
 Route::post('/reviews', 'ReviewController@store');
 Route::get('/reviews/create', 'ReviewController@create');
 Route::get('/reviews/{review}', 'ReviewController@show');
+Route::put('/reviews/{review}', 'ReviewController@update');
+Route::get('/reviews/{review}/edit', 'ReviewController@edit');
