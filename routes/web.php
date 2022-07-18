@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ReviewController@index');
 
 Route::get('/reviews', 'ReviewController@index');
