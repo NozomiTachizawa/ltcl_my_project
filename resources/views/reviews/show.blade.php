@@ -18,6 +18,11 @@
                 </dev>
             </div>
             <p class="edit">[ <a href="/reviews/{{ $review->id }}/edit">編集</a> ]</p>
+            <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit">削除</button>
+            </form>
         <div class='footer'>
             [ <a href="/">戻る</a> ]
         </div>
