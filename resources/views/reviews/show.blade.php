@@ -17,6 +17,7 @@
                     <p class='body'>{{ $review->body }}</p>
                 </dev>
             </div>
+            <p class="edit">[ <a href="/reviews/{{ $review->id }}/edit">編集</a> ]</p>
         <div class='footer'>
             [ <a href="/">戻る</a> ]
         </div>
