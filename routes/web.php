@@ -18,3 +18,4 @@ Route::get('/reviews/{review}', 'ReviewController@show');
 Route::put('/reviews/{review}', 'ReviewController@update');
 Route::delete('/reviews/{review}', 'ReviewController@delete');
 Route::get('/reviews/{review}/edit', 'ReviewController@edit');
+Route::get('/categories/{category}', 'CategoryController@index');

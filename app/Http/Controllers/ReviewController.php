@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Review;
 use App\Http\Requests\ReviewRequest;
+use App\Category;
 
 class ReviewController extends Controller
 {
@@ -17,9 +18,9 @@ class ReviewController extends Controller
         return view('reviews/show')->with(['review' => $review]);
     }
     
-    public function create()
+    public function create(Category $category)
     {
-        return view('reviews/create');
+        return view('reviews/create')->with(['categories' => $category->get()]);
     }
     
     public function store(Review $review, ReviewRequest $request)

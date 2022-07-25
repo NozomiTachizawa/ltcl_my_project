@@ -14,6 +14,7 @@
                     <p class='price'>購入価格：¥{{ $review->price }}</p>
                     <p class='place'>購入場所：{{ $review->place }}</p>
                     <p class='brand'>ブランド・製造会社名：{{ $review->brand }}</p>
+                    <a href="/categories/{{ $review->category->id }}">＃{{ $review->category->name }}</a>
                     <p class='body'>{{ $review->body }}</p>
                 </dev>
             </div>

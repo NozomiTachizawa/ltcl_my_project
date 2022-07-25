@@ -10,6 +10,14 @@
         <h1>新規投稿作成</h1>
         <form action="/reviews" method="POST">
             @csrf
+            <div class="category">
+                <h2>カテゴリー</h2>
+                <select name="review[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="title">
                 <h2>商品名</h2>
                 <input type="text" name="review[title]" placeholder="レビューしたい商品の名前" value="{{ old('review.title') }}"/>
