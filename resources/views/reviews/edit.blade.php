@@ -11,6 +11,14 @@
         <form action="/reviews/{{ $review->id }}" method="POST">
             @csrf
             @method('PUT')
+            <div class="category">
+                <h2>カテゴリー</h2>
+                <select name="review[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="title">
                 <h2>商品名</h2>
                 <input type="text" name="review[title]" value="{{ $review->title }}"/>
