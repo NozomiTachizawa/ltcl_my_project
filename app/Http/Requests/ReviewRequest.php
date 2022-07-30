@@ -14,6 +14,7 @@ class ReviewRequest extends FormRequest
             'review.place' => 'required|string|max:50',
             'review.brand' => 'required|string|max:50',
             'review.body' => 'required|string|max:4000',
+            'review.star' => 'required|integer|min:1|max:5'
         ];
     }
 }

@@ -26,18 +26,20 @@ class ReviewController extends Controller
     public function store(Review $review, ReviewRequest $request)
     {
         $input = $request['review'];
+        $input += ['user_id' => $request->user()->id];
         $review->fill($input)->save();
         return redirect('/reviews/' . $review->id);
     }
     
-    public function edit(Review $review)
+    public function edit(Review $review, Category $category)
     {
-        return view('reviews/edit')->with(['review' => $review]);
+        return view('reviews/edit')->with(['review' => $review, 'categories' => $category->get()]);
     }
     
     public function update(ReviewRequest $request, Review $review)
     {
         $input_review = $request['review'];
+        $input_review += ['user_id' => $request->user()->id];
         $review->fill($input_review)->save();
         return redirect('/reviews/' . $review->id);
     }
