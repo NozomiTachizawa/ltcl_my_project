@@ -1,31 +1,39 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>レビューサイト</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
-        <h1>投稿詳細</h1>
-            <div class='review'>
-                <h2 class='title'>{{ $review->title }}</h2>
-                <dev class='contents'>
-                    <p class='price'>購入価格：¥{{ $review->price }}</p>
-                    <p class='place'>購入場所：{{ $review->place }}</p>
-                    <p class='brand'>ブランド・製造会社名：{{ $review->brand }}</p>
-                    <a href="/categories/{{ $review->category->id }}">＃{{ $review->category->name }}</a>
-                    <p class='body'>{{ $review->body }}</p>
-                </dev>
+@extends('layouts.app')
+
+@section('content')
+    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px">投稿詳細</h1>
+    <div style="margin:50px 250px 100px; padding-top:50px">
+        <div class='review'>
+            <h2 class='title'>{{ $review->title }}</h2>
+            <p class='category'>
+                <a href="/categories/{{ $review->category->id }}">＃{{ $review->category->name }}</a>
+            </p>
+            <p id="star">
+            　  <star-rating :rating="{{ $review->star }}" :read-only="true"></star-rating>
+            </p>
+            <p class='user_name'>
+                <small>👤{{ $review->user->name }}</small>
+            </p>
+            <div class='contents'>
+                <p class='price'>購入価格：¥{{ $review->price }}</p>
+                <p class='place'>購入場所：{{ $review->place }}</p>
+                <p class='brand'>ブランド・製造会社名：{{ $review->brand }}</p>
+                <p class='body' style="white-space: pre-wrap">{{ $review->body }}</p>
+                <p class='datetime'>{{ $review->updated_at }}</p>
             </div>
-            <p class="edit">[ <a href="/reviews/{{ $review->id }}/edit">編集</a> ]</p>
-            <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit">削除</button>
-            </form>
-        <div class='footer'>
-            [ <a href="/">戻る</a> ]
         </div>
-    </body>
-</html>
+        <div style="display: flex; justify-content: right">
+        @if (Auth::user()->id == $review->user_id)
+        <p class="edit" style="padding-right:15px"><a href="/reviews/{{ $review->id }}/edit"><i class="fas fa-pen"></i></a></p>
+        <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="submit" style="background:rgba(255, 255, 255, 0.10); border:none; color:gray"><i class="fas fa-trash-alt"></i></button>
+        </form>
+        @endif
+        </div>
+    </div>
+    <div class='footer' style="text-align:center">
+        [ <a href="/">戻る</a> ]
+    </div>
+ @endsection
