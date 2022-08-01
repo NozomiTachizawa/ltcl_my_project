@@ -12,7 +12,8 @@
 */
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/', 'ReviewController@index');
+    Route::get('/', 'ReviewController@top');
+    Route::get('/index', 'ReviewController@index');
     Route::post('/reviews', 'ReviewController@store');
     Route::get('/reviews/create', 'ReviewController@create');
     Route::get('/reviews/{review}', 'ReviewController@show');

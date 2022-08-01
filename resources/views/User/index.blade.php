@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px">自分の投稿一覧</h1>
+    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px; color:#474a4d">自分の投稿一覧</h1>
     <div style="text-align:center">[ <a href="/reviews/create">新規投稿作成</a> ]</div>
     <div class='own_reviews' id="star">
         @foreach ($own_reviews as $review)
@@ -30,7 +30,7 @@
         @endforeach
     </div>
     <div>
-        <div class='d-flex justify-content-center'>
+        <div class='d-flex justify-content-center' style="margin-bottom:100px">
             {{ $own_reviews->links() }}
         </div>
     </div>

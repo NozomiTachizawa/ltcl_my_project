@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px">投稿詳細</h1>
+    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px; color:#474a4d">投稿詳細</h1>
     <div style="margin:50px 250px 100px; padding-top:50px">
         <div class='review'>
             <h2 class='title'>{{ $review->title }}</h2>
@@ -33,7 +33,7 @@
         @endif
         </div>
     </div>
-    <div class='footer' style="text-align:center">
-        [ <a href="/">戻る</a> ]
+    <div class='footer' style="text-align:center; margin-bottom:100px">
+        [ <a href="/index">戻る</a> ]
     </div>
  @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px">新規投稿作成</h1>
+    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px; color:#474a4d">新規投稿作成</h1>
     <div style="margin:50px 400px 100px; padding-top:50px">
         <form action="/reviews" method="POST">
             @csrf
@@ -49,5 +49,5 @@
             </div>
         </form>
     </div>
-    <div class="back" style="text-align:center">[ <a href="/">戻る</a> ]</div>
+    <div class="back" style="text-align:center; margin-bottom:100px">[ <a href="/index">戻る</a> ]</div>
  @endsection
