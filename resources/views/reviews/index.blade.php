@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px">投稿一覧</h1>
+    <h1 style="text-align:center; margin-top:50px; margin-bottom:50px; color:#474a4d">投稿一覧</h1>
     <div style="text-align:center">[ <a href="/reviews/create">新規投稿作成</a> ]</div>
     <div class='reviews' id="star">
         @foreach ($reviews as $review)
@@ -24,6 +24,13 @@
                         <p class='place'>購入場所：{{ $review->place }}</p>
                         <p class='brand'>ブランド・製造会社名：{{ $review->brand }}</p>
                         <p class='datetime'>{{ $review->updated_at }}</p>
+                    </div>
+                    <div>
+                        @if ($review->is_liked_by_auth_user())
+                            <a href="{{ route('review.unlike', ['id' => $review->id]) }}" class="btn btn-success btn-sm">参考になった！ <span class="badge">{{ $review->likes->count() }}</span></a>
+                        @else
+                            <a href="{{ route('review.like', ['id' => $review->id]) }}" class="btn btn-secondary btn-sm">参考になった！ <span class="badge">{{ $review->likes->count() }}</span></a>
+                        @endif
                     </div>
                 </div>
             </div>
