@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+    public function top()
+    {
+        return view('home');
+    }
+    
     public function index(Review $review)
     {
         return view('reviews/index')->with(['reviews' => $review->getPaginateByLimit()]);
@@ -70,7 +75,7 @@ class ReviewController extends Controller
     public function delete(Review $review)
     {
         $review->delete();
-        return redirect('/');
+        return redirect('/index');
     }
 }
 ?>

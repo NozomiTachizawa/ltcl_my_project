@@ -50,5 +50,5 @@
             </div>
         </form>
     </div>
-    <div class="back" style="text-align:center">[ <a href="/index">戻る</a> ]</div>
+    <div class="back" style="text-align:center; margin-bottom:100px">[ <a href="/index">戻る</a> ]</div>
  @endsection

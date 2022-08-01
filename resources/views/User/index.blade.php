@@ -38,7 +38,7 @@
         @endforeach
     </div>
     <div>
-        <div class='d-flex justify-content-center'>
+        <div class='d-flex justify-content-center' style="margin-bottom:100px">
             {{ $own_reviews->links() }}
         </div>
     </div>

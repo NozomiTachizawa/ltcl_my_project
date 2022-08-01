@@ -40,7 +40,7 @@
             @endif
         </div>
     </div>
-    <div class='footer' style="text-align:center">
+    <div class='footer' style="text-align:center; margin-bottom:100px">
         [ <a href="/index">戻る</a> ]
     </div>
  @endsection
