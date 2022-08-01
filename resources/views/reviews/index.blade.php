@@ -25,6 +25,13 @@
                         <p class='brand'>ブランド・製造会社名：{{ $review->brand }}</p>
                         <p class='datetime'>{{ $review->updated_at }}</p>
                     </div>
+                    <div>
+                        @if ($review->is_liked_by_auth_user())
+                            <a href="{{ route('review.unlike', ['id' => $review->id]) }}" class="btn btn-success btn-sm">参考になった！ <span class="badge">{{ $review->likes->count() }}</span></a>
+                        @else
+                            <a href="{{ route('review.like', ['id' => $review->id]) }}" class="btn btn-secondary btn-sm">参考になった！ <span class="badge">{{ $review->likes->count() }}</span></a>
+                        @endif
+                    </div>
                 </div>
             </div>
         @endforeach

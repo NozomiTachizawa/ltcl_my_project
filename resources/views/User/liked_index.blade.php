@@ -2,10 +2,10 @@
 
 @section('content')
     <h1 style="text-align:center; margin-top:50px; margin-bottom:50px; color:#474a4d">マイページ</h1>
-    <div style="text-align:center; font-weight:bold; color:#336699"><i class="fas fa-caret-right"></i>自分の投稿一覧</div>
-    <div style="text-align:center"><a href="/user/liked">「参考になった！」済投稿一覧</a></div>
-    <div class='own_reviews' id="star">
-        @foreach ($own_reviews as $review)
+    <div style="text-align:center"><a href="/user">自分の投稿一覧</a></div>
+    <div style="text-align:center; font-weight:bold; color:#336699"><i class="fas fa-caret-right"></i>「参考になった！」リスト</div>
+    <div class='own_liked_reviews' id="star">
+        @foreach ($own_liked_reviews as $review)
             <div class='review' style="border-top:dotted gray; margin:50px 200px 50px; padding-top:50px">
                 <div style="padding-left:50px; padding-right:50px">
                     <h2 class='title'>
@@ -38,8 +38,8 @@
         @endforeach
     </div>
     <div>
-        <div class='d-flex justify-content-center' style="margin-bottom:100px">
-            {{ $own_reviews->links() }}
+        <div class='d-flex justify-content-center'>
+            {{ $own_liked_reviews->links() }}
         </div>
     </div>
  @endsection

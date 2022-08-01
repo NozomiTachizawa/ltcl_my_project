@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Review;
 use App\Http\Requests\ReviewRequest;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
+
 
 class ReviewController extends Controller
 {
@@ -47,6 +50,26 @@ class ReviewController extends Controller
         $input_review += ['user_id' => $request->user()->id];
         $review->fill($input_review)->save();
         return redirect('/reviews/' . $review->id);
+    }
+    
+    public function like($id)
+    {
+        Like::create([
+            'review_id' => $id,
+            'user_id' => Auth::id(),
+        ]);
+        
+        session()->flash('success', 'You Liked the Review.');
+        
+        return redirect()->back();
+    }
+    
+    public function unlike($id)
+    {
+        $like = Like::where('review_id', $id)->where('user_id', Auth::id())->first();
+        $like->delete();
+        
+        return redirect()->back();
     }
     
     public function delete(Review $review)

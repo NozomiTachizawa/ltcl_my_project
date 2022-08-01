@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Auth;
+use App\Like;
+
 
 class User extends Authenticatable
 {
@@ -46,5 +48,15 @@ class User extends Authenticatable
     public function getOwnPaginateByLimit(int $limit_count = 5)
     {
         return $this::with('reviews')->find(Auth::id())->reviews()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function liked_reviews()
+    {
+        return $this->hasManyThrough('App\Review', 'App\Like', 'user_id', 'id', null, 'review_id');
+    }
+    
+    public function getOwnLikedPaginatedByLimit(int $limit_count = 5)
+    {
+        return $this::with('reviews')->find(Auth::id())->liked_reviews()->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
